@@ -11,7 +11,7 @@ import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboar
 @EnableDiscoveryClient//发现服务
 @EnableFeignClients//声明为feign
 @EnableHystrixDashboard//监控断路情况
-@EnableHystrix
+@EnableHystrix 
 public class ServiceFeignApplication {
 
 	public static void main(String[] args) {
