@@ -1,0 +1,11 @@
+server:
+  context-path: /girl
+  port: 8000
+  #address: 192.168.10.144
+spring: 
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+  

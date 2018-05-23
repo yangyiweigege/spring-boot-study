@@ -1,0 +1,18 @@
+server:
+  #context-path: /spring-mybatis 不要随便起名字 否则注册完后 无法被发现
+  port: 8091
+  
+mybatis:
+  type-aliases-package: com.weige.ssm.domain
+  mapper-locations: classpath:/com/weige/ssm/mapper/*.xml
+  
+mapper:
+  mappers: com.weige.ssm.mapper
+  not-empty: false
+  identity: MYSQL
+  
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
