@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <display-name>web-socket-study</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  <listener>
+    <listener-class>com.weige.ssm.dwr.FirstListener</listener-class>
+  </listener>
+  <context-param>
+    <param-name>name</param-name>
+    <param-value>yangyiwei</param-value>
+  </context-param>
+  <servlet>
+    <description></description>
+    <display-name>A</display-name>
+    <servlet-name>A</servlet-name>
+    <servlet-class>com.weige.ssm.dwr.A</servlet-class>
+    <init-param>
+      <param-name>contextConfigLocation</param-name>
+      <param-value>/WEB-INF/configs/spring/mvc-dispatcher-servlet.xml</param-value>
+    </init-param>
+  <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>A</servlet-name>
+    <url-pattern>/A</url-pattern>
+  </servlet-mapping>
+  
+</web-app>
