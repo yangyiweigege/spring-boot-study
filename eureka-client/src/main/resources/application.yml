@@ -7,7 +7,7 @@ eureka:
     
 server:
   port: 8763
- # context-path: /eruka-client
+ # context-path: /eruka-client 不要起名字 否则注册能成功 但是无法被访问到
 spring:
   application:
     name: service-hi
