@@ -1,0 +1,11 @@
+server:
+  port: 8761
+  #context-path: /eureka-server 不要给注册中心起名字 或者会注册失败
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
