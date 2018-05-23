@@ -16,7 +16,7 @@ import tk.mybatis.spring.annotation.MapperScan;
 @EnableScheduling//定时任务配置开启
 @EnableAsync//开启异步任务
 @EnableEurekaClient//服务注册
-@EnableJms //开启JMS=====
+@EnableJms //开启JMS
 public class SpringBootStudyApplication {
 
 	public static void main(String[] args) {
