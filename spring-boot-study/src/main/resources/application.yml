@@ -1,7 +1,7 @@
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
+#eureka:
+ # client:
+   # serviceUrl:
+    #  defaultZone: http://localhost:8761/eureka/
 spring:
   application:
     name: spring-boot-study
@@ -34,11 +34,11 @@ spring:
       uri: mongodb://127.0.0.1:27017/spring-boot
   #配置redis
   redis:
-    database: 15
-    host: 192.168.10.18
-    port: 6006
+    database: 0
+    host: 192.168.9.128
+    port: 6379
     timeout: 0
-    password: password
+    password: 123456
     pool:
       #最大连接数
       max-active: 8 
@@ -66,7 +66,7 @@ spring:
     pool:
       enabled: false
 #配置日志
-logging:
-  path: /com/yangyiwei
-  level:
-    com.weige.ssm: debug     
+#logging:
+ # path: /com/yangyiwei
+  #level:
+   # com.weige.ssm: debug     
