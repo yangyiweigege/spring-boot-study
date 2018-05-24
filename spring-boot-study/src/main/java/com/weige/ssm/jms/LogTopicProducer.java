@@ -8,7 +8,7 @@ import org.springframework.jms.core.JmsMessagingTemplate;
 import org.springframework.stereotype.Component;
 
 @Component
-public class LogTopicProducer implements CommandLineRunner {
+public class LogTopicProducer/* implements CommandLineRunner*/ {
 	private final static Logger logger = Logger.getLogger(LogTopicProducer.class);
 
 	@Autowired
@@ -17,7 +17,7 @@ public class LogTopicProducer implements CommandLineRunner {
 	@Autowired
 	private ActiveMQTopic logTopic;
 
-	@Override
+	//@Override
 	public void run(String... strings) throws Exception {
 		StringBuffer content = new StringBuffer();
 		content.append("This is a log message  :  ");

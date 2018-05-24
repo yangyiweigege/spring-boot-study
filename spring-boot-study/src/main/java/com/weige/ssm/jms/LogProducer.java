@@ -9,7 +9,7 @@ import org.springframework.jms.core.JmsMessagingTemplate;
 import org.springframework.stereotype.Component;
 
 @Component
-public class LogProducer implements CommandLineRunner {
+public class LogProducer/* implements CommandLineRunner */{
 
 	private final static Logger logger = Logger.getLogger(LogProducer.class);
 
@@ -20,7 +20,7 @@ public class LogProducer implements CommandLineRunner {
 	private Queue logQueue;
 	
 
-	@Override
+	//@Override
 	public void run(String... strings) throws Exception {
 		StringBuffer content = new StringBuffer();
 		content.append("This is a log message  :  ");
