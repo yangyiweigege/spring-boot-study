@@ -11,6 +11,6 @@ public class LogTopicConsumerTwo {
   
     @JmsListener(destination = QueueName.LOG_TOPIC, containerFactory = "jmsListenerContainerTopic")  
     public void receivedQueue(String msg) {  
-    	logger.info("Has received from " + QueueName.LOG_QUEUE + ", msg: " + msg);  
+    	logger.info("Has received from " + QueueName.LOG_TOPIC + ", msg: " + msg);  
     }  
 }  
