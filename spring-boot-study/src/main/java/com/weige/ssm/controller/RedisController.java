@@ -1,12 +1,14 @@
 package com.weige.ssm.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.alibaba.fastjson.JSONObject;
@@ -15,6 +17,7 @@ import com.weige.ssm.domain.ResultStatus;
 
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
+import redis.clients.jedis.Transaction;
 
 /**
  * <pre>
@@ -62,6 +65,19 @@ public class RedisController {
 		jedis.hmset("redis-attribute", attribute);
 		jedis.close();
 		return result.setCode(ResultStatus.SUCCESS).setData(attribute);
+	}
+	
+	@RequestMapping(value = "/transaction", method = RequestMethod.GET)
+	public Result<Object> transactionTest() {
+		Result<Object> result = new Result<Object>();
+		Jedis jedis = jedisPool.getResource();
+		Transaction transaction = jedis.multi();
+		transaction.lpush("array", "10");
+		transaction.set("yang", "20");
+		List<Object> list = transaction.exec();
+		System.out.println(list.toString());
+		jedisPool.returnResource(jedis);
+		return result.setCode(ResultStatus.SUCCESS).setData(list);
 	}
 
 }
