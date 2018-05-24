@@ -40,34 +40,33 @@
 	</dependencyManagement>
 
 	<dependencies>
-		<!-- 注册服务到
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-eureka</artifactId>
-		</dependency>eureka -->
-		
-		
+		<!-- 注册服务到 <dependency> <groupId>org.springframework.cloud</groupId> <artifactId>spring-cloud-starter-eureka</artifactId> 
+			</dependency>eureka -->
+
+
 		<!-- spring-mvc -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+			<!-- <exclusions>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-logging</artifactId>
+				</exclusion>
+			</exclusions> -->
 		</dependency>
-		
-		<!--  
-        <dependency>  
-            <groupId>org.springframework.boot</groupId>  
-            <artifactId>spring-boot-starter-activemq</artifactId>  
-        </dependency>  
-        -->  
-        <!-- 配置activeMQ -->
-        <dependency>  
-            <groupId>org.springframework</groupId>  
-            <artifactId>spring-jms</artifactId>  
-        </dependency>  
-        <dependency>  
-            <groupId>org.apache.activemq</groupId>  
-            <artifactId>activemq-client</artifactId>  
-        </dependency>  
+
+		<!-- <dependency> <groupId>org.springframework.boot</groupId> <artifactId>spring-boot-starter-activemq</artifactId> 
+			</dependency> -->
+		<!-- 配置activeMQ -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jms</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.activemq</groupId>
+			<artifactId>activemq-client</artifactId>
+		</dependency>
 
 		<!-- spring-boot单元测试 -->
 		<dependency>
@@ -175,16 +174,28 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-mongodb</artifactId>
 		</dependency>
-		
-		<!-- redis追加日志 -->
+
+		<!-- redis
 		<dependency>
 			<groupId>com.github.crab2died</groupId>
 			<artifactId>log4j-redis-appender</artifactId>
 			<version>1.0.0</version>
-		</dependency>
+		</dependency>追加日志 -->
 
-		<!-- <dependency> <groupId>org.springframework.boot</groupId> <artifactId>spring-boot-starter-logging</artifactId> 
-			</dependency>spring-boot 开启日志 -->
+		<!--spring-boot 
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-log4j</artifactId>
+			<version>1.3.8.RELEASE</version>
+		</dependency>开启日志 -->
+		
+		<!--
+		<dependency>
+			<groupId>net.logstash.log4j</groupId>
+			<artifactId>jsonevent-layout</artifactId>
+			<version>1.0</version> 
+		</dependency>日志输出模式 -->
+	
 	</dependencies>
 
 
