@@ -19,6 +19,11 @@ import com.weige.ssm.dao.GirlMapper;
 import com.weige.ssm.domain.Girl;
 import com.weige.ssm.domain.Result;
 import com.weige.ssm.service.GirlServie;
+
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
 /**
  * <pre>
  * 功       能: hibernate实现 
@@ -40,6 +45,8 @@ public class GirlController {
 	private GirlServie girlService;
 
 
+	@ApiOperation(value = "查询女生情况")
+	@ApiImplicitParam(name = "name", value = "姓名", required = true, dataType = "String")
 	@RequestMapping(value = { "/say/{name}", "/speak" }, method = RequestMethod.GET)
 	public Map<String, Object> sayHello(@PathVariable("name") String name) {
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -85,14 +92,17 @@ public class GirlController {
 	 * Q    Q: 2873824885
 	 * </pre>
 	 */
+	@ApiOperation(value = "添加一个女生")
+	@ApiImplicitParams(value ={@ApiImplicitParam(name = "girl", value = "女生信息", required = true, dataType = "String"),@ApiImplicitParam(name = "bindingResult", value = "参数校验结果", required = true, dataType = "bindingResult")})
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public Result<Girl> addGirl(@Valid Girl gril, BindingResult bindingResult) {
+	public Result<Girl> addGirl(@Valid Girl girl, BindingResult bindingResult) {
 		Result<Girl> result = new Result<Girl>();
-		if (bindingResult.hasErrors()) {
+		return result;
+		/*if (bindingResult.hasErrors()) {
 			return result.setCode(404).setMessage(bindingResult.getFieldError().getDefaultMessage());
 		}
 		girlMapper.save(gril);
-		return result.setCode(200).setMessage("成功").setData(gril);
+		return result.setCode(200).setMessage("成功").setData(gril);*/
 	}
 
 	/**

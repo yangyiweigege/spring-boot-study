@@ -65,6 +65,7 @@ public class Tree<T extends BaseTree>
 		Statement statement;
 		try {
 			statement = connection.createStatement();
+			//ResultSet resultSet = statement.executeQuery("select * from t_area where tid='c023c2f6-c3a4-46c1-b084-bcd054737789' ");
 			ResultSet resultSet = statement.executeQuery("select * from t_area where parent_code = '0' ");
 			while (resultSet.next()) {
 				Tree<MeetArea> tree = new Tree<MeetArea>();
@@ -101,7 +102,9 @@ public class Tree<T extends BaseTree>
 		Statement statement;
 		try {
 			statement = connection.createStatement();
+			
 			ResultSet resultSet = statement.executeQuery("select * from t_area where parent_code ='"+tree.getParent().getTid()+"' " );
+			List<MeetArea> allSonArray = new ArrayList<MeetArea>();
 			while (resultSet.next()) {
 				Tree<MeetArea> sonTree = new Tree<MeetArea>();
 				MeetArea meetArea = new MeetArea(); 

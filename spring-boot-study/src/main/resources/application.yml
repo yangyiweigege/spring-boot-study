@@ -65,6 +65,9 @@ spring:
     in-memory: true
     pool:
       enabled: false
+ # output:
+   # ansi:
+     # enabled: ALWAYS
 #配置日志
 logging:
   path: /com/yangyiwei
