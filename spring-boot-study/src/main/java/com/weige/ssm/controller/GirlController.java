@@ -97,12 +97,11 @@ public class GirlController {
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public Result<Girl> addGirl(@Valid Girl girl, BindingResult bindingResult) {
 		Result<Girl> result = new Result<Girl>();
-		return result;
-		/*if (bindingResult.hasErrors()) {
+		if (bindingResult.hasErrors()) {
 			return result.setCode(404).setMessage(bindingResult.getFieldError().getDefaultMessage());
 		}
-		girlMapper.save(gril);
-		return result.setCode(200).setMessage("成功").setData(gril);*/
+		girlMapper.save(girl);
+		return result.setCode(200).setMessage("成功").setData(girl);
 	}
 
 	/**
