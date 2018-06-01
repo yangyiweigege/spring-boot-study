@@ -3,6 +3,9 @@
    # serviceUrl:
     #  defaultZone: http://localhost:8761/eureka/
 spring:
+  #配置服务追踪
+  zipkin:
+    base-url: localhost:9411
   application:
     name: spring-boot-study
   #配置mybatis-yml文件生效
