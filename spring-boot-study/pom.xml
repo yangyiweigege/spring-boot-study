@@ -26,6 +26,8 @@
 		<spring-cloud.version>Edgware.SR3</spring-cloud.version>
 	</properties>
 
+
+
 	<!-- 配置spring-cloud依赖版本 -->
 	<dependencyManagement>
 		<dependencies>
@@ -42,7 +44,12 @@
 	<dependencies>
 		<!-- 注册服务到 <dependency> <groupId>org.springframework.cloud</groupId> <artifactId>spring-cloud-starter-eureka</artifactId> 
 			</dependency>eureka -->
-
+			
+			
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-zipkin</artifactId>
+		</dependency>
 
 		<!-- spring-mvc -->
 		<dependency>

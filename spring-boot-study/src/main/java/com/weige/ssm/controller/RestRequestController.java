@@ -1,5 +1,8 @@
 package com.weige.ssm.controller;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.sleuth.sampler.AlwaysSampler;
+import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -53,7 +56,7 @@ public class RestRequestController {
 				formEntity, JSONObject.class);
 		return response.setCode(ResultStatus.SUCCESS).setData(result);
 	}
-	
+
 	/**
 	 * <pre>
 	 * 功       能: 传递参数为json形式
@@ -67,10 +70,11 @@ public class RestRequestController {
 	public JSONObject httpRequestTest() {
 		JSONObject param = new JSONObject();
 		param.put("type", 1);
-		JSONObject result = httpRequest.sendJSONRequest("http://192.168.10.158:8089/datacenter/model/findAll.action", param);
+		JSONObject result = httpRequest.sendJSONRequest("http://192.168.10.158:8089/datacenter/model/findAll.action",
+				param);
 		return result;
 	}
-	
+
 	/**
 	 * <pre>
 	 * 功       能: get请求
@@ -82,7 +86,11 @@ public class RestRequestController {
 	 */
 	@RequestMapping(value = "/get", method = { RequestMethod.POST, RequestMethod.GET })
 	public JSONObject getRequest() {
-		JSONObject result = restTemplate.getForObject("", JSONObject.class);
+		JSONObject result = restTemplate.getForObject("http://localhost:8000/rest/hello", JSONObject.class);
 		return result;
 	}
+	
+	
+
+
 }
