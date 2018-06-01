@@ -29,7 +29,7 @@
                              type="XMLMAPPER"/>
 
 
-		<table tableName="t_user"  domainObjectName="people"></table>
+		<table tableName="student"  domainObjectName="Student"></table>
 		 
     </context>
 </generatorConfiguration>
