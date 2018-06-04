@@ -19,7 +19,7 @@ import tk.mybatis.spring.annotation.MapperScan;
 @ComponentScan(basePackages = { "com.weige.ssm" }) // 基本扫包配置
 @EnableScheduling // 定时任务配置开启
 @EnableAsync // 开启异步任务
-// @EnableEurekaClient//服务注册
+//@EnableEurekaClient//服务注册
 @EnableJms // 开启JMS消息服务
 public class SpringBootStudyApplication {
 
