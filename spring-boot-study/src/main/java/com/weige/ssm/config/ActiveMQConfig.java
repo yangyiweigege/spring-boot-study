@@ -11,7 +11,12 @@ import org.springframework.jms.config.DefaultJmsListenerContainerFactory;
 import org.springframework.jms.config.JmsListenerContainerFactory;
 
 import com.weige.ssm.jms.QueueName;
-
+/**
+ * 配置消息中间件activemq
+ * @author yangyiwei
+ * @date 2018年6月4日
+ * @time 下午1:46:00
+ */
 @Configuration
 public class ActiveMQConfig {
 

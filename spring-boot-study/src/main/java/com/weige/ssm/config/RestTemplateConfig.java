@@ -8,7 +8,9 @@ import org.springframework.web.client.RestTemplate;
 
 /**
  * 配置restTemplate
- * 
+ * @author yangyiwei
+ * @date 2018年6月4日
+ * @time 下午1:46:21
  */
 @Configuration
 public class RestTemplateConfig {

@@ -17,6 +17,7 @@ import com.weige.ssm.domain.ResultStatus;
 
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
+import redis.clients.jedis.Pipeline;
 import redis.clients.jedis.Transaction;
 
 /**
@@ -63,21 +64,45 @@ public class RedisController {
 		attribute.put("min", "5");
 		attribute.put("timeout", "10");
 		jedis.hmset("redis-attribute", attribute);
-		jedis.close();
+		jedis.disconnect();
 		return result.setCode(ResultStatus.SUCCESS).setData(attribute);
 	}
 	
+	/**
+	 * 测试redis事务
+	 * @return
+	 */
 	@RequestMapping(value = "/transaction", method = RequestMethod.GET)
 	public Result<Object> transactionTest() {
 		Result<Object> result = new Result<Object>();
 		Jedis jedis = jedisPool.getResource();
-		Transaction transaction = jedis.multi();
+		Transaction transaction = jedis.multi(); //开启redis事务
 		transaction.lpush("array", "10");
 		transaction.set("yang", "20");
-		List<Object> list = transaction.exec();
+		List<Object> list = transaction.exec(); //提交redis事务
 		System.out.println(list.toString());
-		jedisPool.returnResource(jedis);
+		jedis.disconnect();
 		return result.setCode(ResultStatus.SUCCESS).setData(list);
+	}
+	
+	/**
+	 * 测试redis管道
+	 * @return
+	 */
+	@RequestMapping(value = "/pipe", method = {RequestMethod.POST, RequestMethod.GET})
+	public Result<Object> redisPipelined() {
+		Result<Object> result = new Result<Object>();
+		long startTime = System.currentTimeMillis();// 获取当前时间
+		Jedis jedis = jedisPool.getResource();
+		Pipeline pipeline = jedis.pipelined();  //redis管道技术
+		for (int i = 0; i < 1000; i++) {
+			pipeline.lpush("pipe", "管道测试:" + i);
+		}
+		List<Object> list = pipeline.syncAndReturnAll();//发送redis管道
+		System.out.println(list.toString());
+		jedis.disconnect();
+		long endTime = System.currentTimeMillis();
+		return result.setCode(ResultStatus.SUCCESS).setData("程序运行时间:" + (endTime - startTime));
 	}
 
 }
