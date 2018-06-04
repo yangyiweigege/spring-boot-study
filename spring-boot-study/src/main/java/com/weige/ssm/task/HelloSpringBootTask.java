@@ -27,7 +27,7 @@ public class HelloSpringBootTask {
 	 * Q    Q: 2873824885
 	 * </pre>
 	 */
-	//@Scheduled(fixedRate = 5000)
+	@Scheduled(fixedRate = 5000)
 	@Scheduled(cron = "0 */1 * * * ?")
 	public void saySpringBoot() {
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 

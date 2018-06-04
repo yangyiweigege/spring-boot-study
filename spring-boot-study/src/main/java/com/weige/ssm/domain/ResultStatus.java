@@ -14,6 +14,7 @@ public enum ResultStatus{
 	 */
 	DATA_NOT_FIND("数据没有找到", 0), 
 	SUCCESS("返回结果成功", 1),
+	LACK_PARAM("缺乏基本参数", 2),
 	DEFINE_ERROR("自定义错误", 12580),
 	UNKNOW("出现未知错误", -1),
 	ONLY_SMALL("你可能还在上小学", 100),

@@ -16,11 +16,14 @@ import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
+import org.springframework.data.redis.serializer.RedisSerializer;
+import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
 
@@ -45,6 +48,11 @@ public class RedisConfig extends CachingConfigurerSupport {
 		return new JedisPool(config, host, port, timeout, password);
 	}
 
+	@Bean(name = "jedis")
+	public Jedis jedis(@Qualifier("jedisPool") JedisPool jedisPool) {
+		return jedisPool.getResource();// 返回一条长用连接
+	}
+
 	@Bean(name = "jedisPoolConfig")
 	public JedisPoolConfig jedisPoolConfig(@Value("${jedis.pool.config.maxTotal}") int maxTotal,
 			@Value("${jedis.pool.config.maxIdle}") int maxIdle,
@@ -56,20 +64,19 @@ public class RedisConfig extends CachingConfigurerSupport {
 		return config;
 	}
 
-	/*
-	 * 定义缓存数据 key 生成策略的bean 包名+类名+方法名+所有参数
-	 */
+	
+	/* 定义缓存数据 key 生成策略的bean 包名+类名+方法名+所有参数 此方法不建议使用 因为返回的类是动态代理类*/
 	@Bean
-	public KeyGenerator wiselyKeyGenerator() {
+	public KeyGenerator keyGenerator() {
 		return new KeyGenerator() {
 			@Override
 			public Object generate(Object target, Method method, Object... params) {
 				StringBuilder sb = new StringBuilder();
 				sb.append(target.getClass().getName());
-				sb.append(method.getName());
 				for (Object obj : params) {
-					sb.append(obj.toString());
+					sb.append(obj);
 				}
+				System.out.println("缓存的key是：" + sb.toString());
 				return sb.toString();
 			}
 		};
@@ -85,14 +92,17 @@ public class RedisConfig extends CachingConfigurerSupport {
 	@Bean
 	public CacheManager cacheManager(@SuppressWarnings("rawtypes") RedisTemplate redisTemplate) {
 		RedisCacheManager cacheManager = new RedisCacheManager(redisTemplate);
-		cacheManager.setDefaultExpiration(1800);//设置缓存保留时间（seconds）
+		cacheManager.setDefaultExpiration(1800);// 设置缓存保留时间（seconds）
 		return cacheManager;
 	}
 
 	// 1.项目启动时此方法先被注册成bean被spring管理
 	@Bean
 	public RedisTemplate<String, String> redisTemplate(RedisConnectionFactory factory) {
+
 		StringRedisTemplate template = new StringRedisTemplate(factory);
+		RedisSerializer<String> redisSerializer = new StringRedisSerializer();// Long类型不可以会出现异常信息;
+		template.setKeySerializer(redisSerializer);
 		Jackson2JsonRedisSerializer jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer(Object.class);
 		ObjectMapper om = new ObjectMapper();
 		om.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);

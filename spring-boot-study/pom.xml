@@ -46,10 +46,10 @@
 			</dependency>eureka -->
 			
 			
-		<dependency>
+		<!-- <dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-zipkin</artifactId>
-		</dependency>
+		</dependency> -->
 
 		<!-- spring-mvc -->
 		<dependency>

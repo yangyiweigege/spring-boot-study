@@ -1,5 +1,5 @@
 package com.weige.ssm.config;
-import org.springframework.cloud.sleuth.sampler.AlwaysSampler;
+//import org.springframework.cloud.sleuth.sampler.AlwaysSampler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.client.ClientHttpRequestFactory;
@@ -20,10 +20,10 @@ public class RestTemplateConfig {
         return new RestTemplate(factory);
     }
     
-	@Bean
-	public AlwaysSampler defaultSampler() {
+/*	@Bean
+	public AlwaysSampler defaultSampler() { //服务追踪
 		return new AlwaysSampler();
-	}
+	}*/
 
     @Bean
     public ClientHttpRequestFactory simpleClientHttpRequestFactory(){

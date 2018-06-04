@@ -6,6 +6,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 import com.weige.ssm.interceptor.OneInterceptor;
 import com.weige.ssm.interceptor.TwoInterceptor;
+import com.weige.ssm.interceptor.ValidatePageInterceptor;
 
 
 /**
@@ -20,15 +21,17 @@ import com.weige.ssm.interceptor.TwoInterceptor;
 @Configuration
 public class WebMvcInterceptor extends WebMvcConfigurerAdapter {
 
+	
+	
 	/**
 	 * {@inheritDoc}
 	 * <p>This implementation is empty.
 	 */
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
-		/*registry.addInterceptor(new OneInterceptor()).addPathPatterns("/**");
-		registry.addInterceptor(new TwoInterceptor()).addPathPatterns("/**");
+		//registry.addInterceptor(new OneInterceptor()).addPathPatterns("/**");
+		registry.addInterceptor(new ValidatePageInterceptor()).addPathPatterns("/**"); //注册分页
 		super.addInterceptors(registry);//注册该拦截器
-*/	}
+	}
 	
 }

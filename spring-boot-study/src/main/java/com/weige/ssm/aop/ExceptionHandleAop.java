@@ -25,9 +25,9 @@ public class ExceptionHandleAop {
 	@ExceptionHandler(value = Exception.class)
 	public Result<Object> handle(Exception e) {
 		Result<Object> result = new Result<Object>();
-		if (e instanceof ProjectException) {
+	/*	if (e instanceof ProjectException) {
 			return result.setCode(((ProjectException) e).getCode()).setMessage(e.getMessage());
-		}
+		}*/
 		logger.error("出现了系统未知的错误-----！！！！", e);
 		return result.setCode(ResultStatus.UNKNOW);
 	}
