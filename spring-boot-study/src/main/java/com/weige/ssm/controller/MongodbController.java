@@ -53,6 +53,12 @@ public class MongodbController {
 		return result.setCode(ResultStatus.SUCCESS).setData(id);
 	}
 
+	/**
+	 * 根据id更新
+	 * @param person
+	 * @param bindingResult
+	 * @return
+	 */
 	@RequestMapping(value = "/update", method = { RequestMethod.GET, RequestMethod.POST })
 	public Result<Object> update(@Valid Person person, BindingResult bindingResult) {
 		if (bindingResult.hasErrors()) {
@@ -63,18 +69,33 @@ public class MongodbController {
 		return result;
 	}
 
+	/**
+	 * 返回所有人员
+	 * @return
+	 */
 	@RequestMapping(value = "/find/all", method = { RequestMethod.GET, RequestMethod.POST })
 	public Result<Object> findAll() {
 		Result<Object> result = personService.findAll();
 		return result;
 	}
 
+	/**
+	 * 根据id查询
+	 * @param id
+	 * @return
+	 */
 	@RequestMapping(value = "/find/detail/{id}", method = { RequestMethod.GET, RequestMethod.POST })
 	public Result<Object> findById(@PathVariable("id") Integer id) {
 		Result<Object> result = personService.findById(id);
 		return result;
 	}
 
+	/**
+	 * 分页查询
+	 * @param pageSize
+	 * @param pageNo
+	 * @return
+	 */
 	@RequestMapping(value = "/find/page", method = { RequestMethod.GET, RequestMethod.POST })
 	@ValidatePage
 	public Result<Object> findByPage(Integer pageSize, Integer pageNo) {

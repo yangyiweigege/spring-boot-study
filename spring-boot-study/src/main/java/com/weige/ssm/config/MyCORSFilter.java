@@ -50,7 +50,7 @@ public class MyCORSFilter implements Filter {
 		response.setHeader("Access-Control-Allow-Headers", "x-requested-with,Authorization");
 		response.setHeader("Access-Control-Allow-Credentials", "true");
 		HttpServletRequest request = (HttpServletRequest) servletRequest;
-		logger.info("执行了cors......" + "url = " + request.getRequestURI() + "请求来自:" + request.getRemoteAddr());
+		logger.info("执行了cors......" + "url = " + request.getRequestURI() + " 请求来自:" + request.getRemoteAddr());
 		filterChain.doFilter(servletRequest, servletResponse);
 	}
 
