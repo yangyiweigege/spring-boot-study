@@ -1,4 +1,4 @@
-package com.weige.ssm.config;
+package com.weige.ssm.filter;
 
 import java.io.IOException;
 
@@ -8,6 +8,7 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -28,19 +29,19 @@ import org.springframework.context.annotation.Configuration;
  * @author yangyiwei
  *
  */
-@Configuration
+@WebFilter(filterName = "myCORSFilter", urlPatterns = "/*")
 public class MyCORSFilter implements Filter {
-	
+
 	private final static Logger logger = Logger.getLogger(MyCORSFilter.class);
 
 	@Override
 	public void destroy() {
-		
+
 	}
 
 	@Override
 	public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain)
-			throws IOException, ServletException {		
+			throws IOException, ServletException {
 		HttpServletResponse response = (HttpServletResponse) servletResponse;
 		// String origin = (String) servletRequest.getRemoteHost() + ":" +
 		// servletRequest.getRemotePort();
@@ -58,22 +59,5 @@ public class MyCORSFilter implements Filter {
 	public void init(FilterConfig arg0) throws ServletException {
 
 	}
-	
 
-	/**
-	 * 注册过滤器
-	 * 
-	 * @return
-	 */
-	@Bean
-	public FilterRegistrationBean someFilterRegistration() {
-		FilterRegistrationBean registration = new FilterRegistrationBean();
-		registration.setFilter(new MyCORSFilter());
-		registration.addUrlPatterns("/*");
-		registration.addInitParameter("paramName", "paramValue");
-		registration.setName("myCORSFilter");
-		return registration;
-	}
-
-	
 }
