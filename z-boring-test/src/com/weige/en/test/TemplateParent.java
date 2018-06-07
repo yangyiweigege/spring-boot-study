@@ -40,11 +40,12 @@ public abstract class TemplateParent<T, PK extends Serializable> {
 	public abstract T findById(PK id);
 	
 	public static <A> List<A>  template(Class<A> a) {
+		System.out.println(a.getName().substring(0, 1).toUpperCase() + a.getName().substring(1));
 		return null;
 	}
 	
 	public static void main(String[] args) {
-		//List<Servlet> list = TemplateParent.template(Servlet.class);
+		List list = TemplateParent.template(Servlet.class);
 		int a[][] = {{1,2,3,4},{5,6,7,8}};
 		for (int i = 0; i < a.length; i++) {
 			int b[] = a[i];

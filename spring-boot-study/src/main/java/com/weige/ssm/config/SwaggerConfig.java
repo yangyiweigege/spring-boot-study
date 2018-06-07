@@ -10,9 +10,14 @@ import springfox.documentation.service.ApiInfo;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
-
-//@Configuration
-//@EnableSwagger2
+/**
+ * 配置swagger接口文档
+ * @author yangyiwei
+ * @date 2018年6月7日
+ * @time 上午10:35:22
+ */
+@Configuration
+@EnableSwagger2
 public class SwaggerConfig {
 
 	@Bean
@@ -28,8 +33,8 @@ public class SwaggerConfig {
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 .title("Spring Boot中使用Swagger2构建RESTful APIs")
-                .description("api根地址：http://api.xiaomo.info:8080/")
-                .termsOfServiceUrl("https://xiaomo.info/")
+                .description("api根地址：http://localhost:8091/")
+                .termsOfServiceUrl("http://localhost:8091/")
                 .contact("杨乙伟")
                 .version("3.0")
                 .build();

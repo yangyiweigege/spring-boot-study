@@ -32,10 +32,6 @@ public class Result<T> {
 		return code;
 	}
 
-	public Result<T> setCode(Integer code) {
-		this.code = code;
-		return this;
-	}
 
 	public String getMessage() {
 		return message;
