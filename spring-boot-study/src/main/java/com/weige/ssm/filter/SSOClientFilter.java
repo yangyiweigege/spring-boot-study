@@ -15,7 +15,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.client.RestTemplate;
 
-@WebFilter(filterName = "sSOClientFilter", urlPatterns = "/*")
+//@WebFilter(filterName = "sSOClientFilter", urlPatterns = "/*")
 public class SSOClientFilter implements Filter {
 
 	@Autowired
