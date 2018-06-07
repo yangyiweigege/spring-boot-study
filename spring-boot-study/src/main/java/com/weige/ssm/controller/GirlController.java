@@ -18,9 +18,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.weige.ssm.dao.GirlMapper;
 import com.weige.ssm.domain.Girl;
 import com.weige.ssm.domain.Result;
+import com.weige.ssm.domain.ResultStatus;
 import com.weige.ssm.service.GirlServie;
 
-import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
@@ -98,10 +98,10 @@ public class GirlController {
 	public Result<Girl> addGirl(@Valid Girl girl, BindingResult bindingResult) {
 		Result<Girl> result = new Result<Girl>();
 		if (bindingResult.hasErrors()) {
-			return result.setCode(404).setMessage(bindingResult.getFieldError().getDefaultMessage());
+			return result.setCode(ResultStatus.DEFINE_ERROR).setMessage(bindingResult.getFieldError().getDefaultMessage());
 		}
 		girlMapper.save(girl);
-		return result.setCode(200).setMessage("成功").setData(girl);
+		return result.setCode(ResultStatus.SUCCESS).setData(girl);
 	}
 
 	/**
