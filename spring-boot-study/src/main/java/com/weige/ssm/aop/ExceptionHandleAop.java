@@ -11,7 +11,7 @@ import com.weige.ssm.domain.ProjectException;
  * <pre>
  * 功       能: 统一异常处理
  * 涉及版本: V3.0.0 
- * 创  建  者: yangyiwei
+ * 创  建  者: yangyiwei 围绕为
  * 日       期: 2018年3月9日 下午1:45:31
  * Q    Q: 2873824885
  * </pre>
