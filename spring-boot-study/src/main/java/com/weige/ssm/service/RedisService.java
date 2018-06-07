@@ -1,5 +1,6 @@
 package com.weige.ssm.service;
 
+import com.alibaba.fastjson.JSONObject;
 import com.weige.ssm.domain.Result;
 
 /**
@@ -21,5 +22,24 @@ public interface RedisService {
 	 * @return
 	 */
 	public Result<Object> execPipeLined();
+
+	/**
+	 * 执行redis hash操作
+	 * @param jsonObject
+	 * @return
+	 */
+	public Result<Object> hashOperate(JSONObject jsonObject);
+
+	/**
+	 * 模拟多线程秒杀
+	 * @return
+	 */
+	public Result<Object> highKill();
+
+	/**
+	 * 模拟分布式锁
+	 * @return
+	 */
+	public Result<Object> distributeLock();
 
 }
