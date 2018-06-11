@@ -1,9 +1,0 @@
-jedis.pool.host:192.168.9.128
-jedis.pool.port:6379
-jedis.pool.password:123456
-jedis.pool.timeout:60000
-jedis.pool.config.maxTotal:100
-jedis.pool.config.maxIdle:10
-jedis.pool.config.maxWaitMillis:100000
-
- 
