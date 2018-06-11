@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
  * Q    Q: 2873824885
  * </pre>
  */
-//@Component
+@Component
 public class HelloSpringBootTask {
 
 	/**
@@ -27,8 +27,8 @@ public class HelloSpringBootTask {
 	 * Q    Q: 2873824885
 	 * </pre>
 	 */
-	@Scheduled(fixedRate = 5000)
-	@Scheduled(cron = "0 */1 * * * ?")
+	@Scheduled(fixedRate = 30000)
+	//@Scheduled(cron = "0 */1 * * * ?")
 	public void saySpringBoot() {
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
 		System.out.println("当前时间：" + df.format(new Date()) + ": hello spring boot");

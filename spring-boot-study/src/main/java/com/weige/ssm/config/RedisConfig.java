@@ -48,10 +48,10 @@ public class RedisConfig extends CachingConfigurerSupport {
 		return new JedisPool(config, host, port, timeout, password);
 	}
 
-	@Bean(name = "jedis")
+/*	@Bean(name = "jedis")
 	public Jedis jedis(@Qualifier("jedisPool") JedisPool jedisPool) {
 		return jedisPool.getResource();// 返回一条长用连接
-	}
+	}*/
 
 	@Bean(name = "jedisPoolConfig")
 	public JedisPoolConfig jedisPoolConfig(@Value("${jedis.pool.config.maxTotal}") int maxTotal,

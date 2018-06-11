@@ -25,8 +25,7 @@ import redis.clients.jedis.JedisPool;
  * @date 2018年6月4日
  * @time 下午3:47:57
  */
-@Aspect
-@Component
+//@Aspect
 public class LogAspj {
 
 	private final static Logger logger = Logger.getLogger(LogAspj.class);

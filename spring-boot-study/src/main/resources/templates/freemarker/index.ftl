@@ -5,6 +5,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	freemarker模板 ${resource.name}
+	freemarker模板
 </body>
 </html>

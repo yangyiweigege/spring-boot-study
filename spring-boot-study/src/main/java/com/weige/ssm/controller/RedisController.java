@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.weige.ssm.domain.Result;
 import com.weige.ssm.domain.ResultStatus;
@@ -80,6 +81,18 @@ public class RedisController {
 		Result<Object> result = redisService.hashOperate(jsonObject);
 		return result;
 	}
+	
+	/**
+	 * redis hash操作设置
+	 */
+	@ApiOperation(value = "redis的list操作")
+	@ApiImplicitParam(name = "jsonArray", value = "要存入的队列数组", required = true, dataType = "Object")
+	@RequestMapping(value = "/list", method = { RequestMethod.POST, RequestMethod.GET })
+	public Result<Object> list(@RequestBody JSONArray jsonArray) {
+		Result<Object> result = redisService.listOperate(jsonArray);
+		return result;
+	}
+
 
 	/**
 	 * redis模拟多线程并发访问，防止超卖

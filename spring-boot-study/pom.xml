@@ -111,11 +111,11 @@
 			<artifactId>spring-boot-starter-freemarker</artifactId>
 		</dependency>
 
-		<!-- 模板thymeleaf -->
+		<!-- 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
-		</dependency>
+		</dependency>模板thymeleaf -->
 
 		<!-- 配置spring-data jpa(hibernate) -->
 		<dependency>

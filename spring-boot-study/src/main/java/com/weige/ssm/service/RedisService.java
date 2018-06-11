@@ -1,5 +1,6 @@
 package com.weige.ssm.service;
 
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.weige.ssm.domain.Result;
 
@@ -41,5 +42,12 @@ public interface RedisService {
 	 * @return
 	 */
 	public Result<Object> distributeLock();
+
+	/**
+	 * redis数组操作
+	 * @param jsonArray
+	 * @return
+	 */
+	public Result<Object> listOperate(JSONArray jsonArray);
 
 }
