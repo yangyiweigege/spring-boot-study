@@ -56,17 +56,20 @@ public enum DeviceDisabledEnum {
 	}
 	
 	public static DeviceDisabledEnum getResult(Integer code) {
-		switch (code) {
-		case 1:
-			return DeviceDisabledEnum.DISABLED;
-		case 2:
-			return DeviceDisabledEnum.ENABLED;
-		default:
-			return null;
-		}
+		for (DeviceDisabledEnum e : DeviceDisabledEnum.values()) {  
+		   if (e.getCode() == code) {
+			   return e;
+		   }  else {
+			   return null;
+		   }
+		}  
+		return null;
 	}
 	
 	public static void iterateEnum() {
+		
+		
+		
 		EnumSet<DeviceDisabledEnum> currEnumSet = EnumSet.allOf(DeviceDisabledEnum.class);
 
         for (DeviceDisabledEnum aLightSetElement : currEnumSet) {
@@ -74,6 +77,11 @@ public enum DeviceDisabledEnum {
             System.out.println("当前EnumSet中数据为：" + aLightSetElement + "值" +aLightSetElement.getName());
 
         }
+	}
+	
+	public static void main(String[] args) {
+		System.out.println(DeviceDisabledEnum.getResult(0).getName());
+		
 	}
 	
 }
