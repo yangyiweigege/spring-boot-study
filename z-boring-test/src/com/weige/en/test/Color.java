@@ -24,6 +24,8 @@ public enum Color {
 		this.value = value;
 	}
 	
+	
+	
 	public static void main(String[] args) {
 		
 	}
